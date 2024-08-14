@@ -197,9 +197,62 @@ for (i in seq_along(tigers)) {
 }
 print(big_cats)
 
+```
 
+```{r}
+mean_mtcars <- vector(mode = "numeric", length = ncol(mtcars))
+
+for (i in 1:ncol(mtcars)) {
+  mean_value <- mean(mtcars[[i]], na.rm = TRUE)
+  mean_mtcars[i] <- mean_value
+}
+print(mean_mtcars)
+```
+
+```{r}
+library(palmerpenguins)
+penguins
+
+median_penguins <- vector(mode = "numeric", length = ncol(penguins))
+
+for (i in seq_along(penguins)) {
+  if (is.numeric(penguins[[i]])) {
+  penguin_median <- median(penguins[[i]], na.rm = TRUE)
+  median_penguins[i] <- penguin_median
+  print(penguin_median)
+  } else {
+  print("non-numeric column")
+    }
+}
 
 
 ```
+
+
+
+```{r}
+apply(mtcars, 2, mean)
+
+library(tidyverse)
+
+penguins %>%
+  group_by(species) %>%
+  summarise(across(where(is.numeric), mean, na.rm = TRUE))
+
+class(penguins$year)
+
+```
+
+```{r}
+library(purrr)
+
+map(.x = mtcars, .f = mean) #returned as a list
+map_df(.x = mtcars, .f = mean)
+
+
+```
+
+
+
 
 
