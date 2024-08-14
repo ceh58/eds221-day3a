@@ -1,0 +1,189 @@
+---
+title: "EDS 221 Day 3 Practice"
+author: "Carmen"
+format: html
+editor: visual
+editor_options: 
+  chunk_output_type: console
+---
+
+## Boolean expressions:
+
+```{r}
+pinyon_pine <- 14
+lodgepole_pine <- 46
+
+pinyon_pine == 10
+pinyon_pine < lodgepole_pine
+
+pinyon_pine != 25
+```
+
+## Conditionals
+
+```{r}
+burrito <- 2.4
+
+if (burrito > 2) {
+  print("I love burritos!")
+}
+```
+
+## 
+
+```{r}
+pika <- 60
+if (pika > 60) {
+  print("Mega pika!")
+} else
+  print("Normal pika")
+```
+
+```{r}
+marmot <- -4.8
+if (marmot < 0.5) {
+ print("a small marmot!") 
+} else if (marmot >= 0.5 & marmot < 3) {
+  print("a medium marmot!")
+} else
+  print("a large marmot!")
+```
+
+```{r}
+library(stringr)
+my_ships <- c("Millenium Falcon",
+              "X-wing",
+              "Tie-Fighter",
+              "Death Star")
+
+str_detect(my_ships, pattern = "r")
+```
+
+```{r}
+phrase <- "I love burritos"
+
+if (str_detect(phrase, "love")) {
+  print("burrito fan!")
+}
+```
+
+
+## switch statements
+
+```{r}
+species = "mouse"
+
+switch(species,
+       "cat" = print("meow"),
+       "dog" = print("woof"),
+       "mouse" = print("squeak"))
+
+
+if (species == "cat") {
+  print("meow")
+} else if (species == "dog") {
+  print("woof")
+} else if (species == "mouse")
+  print("Squeak")
+
+
+```
+
+## intro to for loops
+
+```{r}
+dog_names <- c("Teddy", "Khora", "Banjo", "Waffle")
+
+for (i in dog_names) {
+  print(paste0("My dog's name is ", i, "."))
+} #paste0 excludes the space
+```
+
+```{r}
+mass <- seq(from = 0, to = 3, by = 0.5)
+mass
+mass_1 <- mass[1]
+for (i in mass) {
+  new_value <- i + 2
+  print(new_value)
+}
+```
+
+```{r}
+mass <- seq(from = 0, to = 3, by = 0.5)
+
+for (i in seq_along(mass)) {
+  new_value <- mass[i] + 2
+  print(new_value)
+}
+```
+
+```{r}
+tree_height <- c(1, 2, 6, 10)
+
+i <- 1
+
+for (i in seq_along(tree_height)) {
+  new_value <- tree_height[i] + tree_height[i + 1]
+  print(new_value)
+}
+```
+
+## Conditional for loops
+
+```{r}
+animal <- c("cat", "dog", "dog", "zebra", "dog") 
+
+for (i in seq_along(animal)) {
+  if (animal[i] == "dog") {
+    print("I love dogs!")
+  } else
+    print("This is not a dog.")
+}
+
+```
+
+```{r}
+species <- c("dog", "elephant", "goat", "dog", "dog", "elephant")
+age_human <-c(3, 8, 4, 6, 12, 18)
+
+for (i in seq_along(species)) {
+  if (species[i] == "dog") {
+    animal_age <- age_human[i] * 7
+  } else if (species[i] == "elephant") {
+    animal_age <- age_human[i] * 0.88
+  } else if (species[i] == "goat") {
+    animal_age <- age_human[i] * 4.7
+  }
+  print(animal_age)
+}
+
+```
+
+## Storing for loop output
+rm(list = ls())
+
+```{r}
+#create empty vector
+
+species <- c("dog", "elephant", "goat", "dog", "dog", "elephant")
+animal_ages <- vector(mode = "numeric", length = length(species))
+
+age_human <-c(3, 8, 4, 6, 12, 18)
+
+for (i in seq_along(species)) {
+  if (species[i] == "dog") {
+    animal_age <- age_human[i] * 7
+  } else if (species[i] == "elephant") {
+    animal_age <- age_human[i] * 0.88
+  } else if (species[i] == "goat") {
+    animal_age <- age_human[i] * 4.7
+  }
+  animal_ages[i] <- animal_age
+}
+print(animal_ages)
+
+```
+
+
+
